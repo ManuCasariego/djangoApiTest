@@ -1,7 +1,8 @@
 import json
 
-import scrapBeRoomers
 import scrapUniplaces
+
+from utils import scrapBeRoomers
 
 
 def saveToFile(data, fileName):

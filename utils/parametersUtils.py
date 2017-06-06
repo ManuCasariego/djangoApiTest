@@ -1,4 +1,4 @@
-def addParamatersToLink(link, parameters):
+def add_paramaters_to_link(link, parameters):
     if len(parameters) > 0:
         if '?' not in link:
             link += '?'
@@ -8,11 +8,11 @@ def addParamatersToLink(link, parameters):
             if type(value) is str:
                 link += key + '=' + value
             elif type(value) is list:
-                firstItemPassed = False
+                first_item_passed = False
                 for value_aux in value:
-                    if firstItemPassed:
+                    if first_item_passed:
                         link += '&'
                     else:
-                        firstItemPassed = True
+                        first_item_passed = True
                     link += key + '=' + value_aux
     return link

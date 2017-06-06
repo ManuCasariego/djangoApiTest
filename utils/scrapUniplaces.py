@@ -2,8 +2,8 @@ import datetime
 
 from bs4 import BeautifulSoup
 
-from utils.parametersUtils import addParamatersToLink
-from utils.htmlUtils import getHTMLCode
+from utils.parametersUtils import add_paramaters_to_link
+from utils.htmlUtils import get_html_code
 
 
 def applyFiltersUniplaces(link, filters):
@@ -52,7 +52,7 @@ def applyFiltersUniplaces(link, filters):
             elif t == 'residence':
                 parameters['accommodation-types[]'] = 'residence'
 
-    return addParamatersToLink(link, parameters)
+    return add_paramaters_to_link(link, parameters)
 
 
 def uniplacesAccommodations(filters={}):
@@ -60,7 +60,7 @@ def uniplacesAccommodations(filters={}):
     link = applyFiltersUniplaces(link, filters)
     print(link)
 
-    HTMLCode = getHTMLCode(link, offlineFile='pruebacodigouniplaces.html', usingMock=False)
+    HTMLCode = get_html_code(link, offlineFile='pruebacodigouniplaces.html', usingMock=False)
     bsObj = BeautifulSoup(HTMLCode, 'html.parser')
 
     titles = bsObj.findAll('a', {'class': 'offer-summary__main-link'})
@@ -119,7 +119,7 @@ def uniplacesAccommodations(filters={}):
             checkout = datetime.datetime.strptime(checkout, '%d-%m-%Y').strftime('%Y-%m-%d')
             parameters['move-out'] = checkout
 
-        links_string[i] = addParamatersToLink(links_string[i], parameters)
+        links_string[i] = add_paramaters_to_link(links_string[i], parameters)
 
         links_string[i] = links_string[i].replace(':', '%3A') \
             .replace('/', '%2F') \

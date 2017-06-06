@@ -2,8 +2,8 @@ import re
 
 from bs4 import BeautifulSoup
 
-from utils.parametersUtils import addParamatersToLink
-from utils.htmlUtils import getHTMLCode
+from utils.parametersUtils import add_paramaters_to_link
+from utils.htmlUtils import get_html_code
 
 
 def applyFiltersBeRoomers(link, filters):
@@ -65,7 +65,7 @@ def applyFiltersBeRoomers(link, filters):
                     addedTheTypeFlag = True
         parameters['type'] = types
 
-    return addParamatersToLink(link, parameters)
+    return add_paramaters_to_link(link, parameters)
 
 
 def beRoomersAccommodations(filters={}):
@@ -73,7 +73,7 @@ def beRoomersAccommodations(filters={}):
     link = 'https://www.beroomers.com/s/madrid-spain'
     link = applyFiltersBeRoomers(link, filters)
     print(link)
-    HTMLCode = getHTMLCode(link, offlineFile='pruebacodeberoomers.html', usingMock=False)
+    HTMLCode = get_html_code(link, offlineFile='pruebacodeberoomers.html', usingMock=False)
     if HTMLCode is not None:
         bsObj = BeautifulSoup(HTMLCode, 'html.parser')
 
@@ -112,7 +112,7 @@ def beRoomersAccommodations(filters={}):
         for i in range(len(links_string)):
             links_string[i] = 'https://www.beroomers.com' + links_string[i]
             # Tracker beRoomers
-            links_string[i] = addParamatersToLink(links_string[i], {
+            links_string[i] = add_paramaters_to_link(links_string[i], {
                 'affiliate': 'setafoot',
                 'utm_source': 'setafoot',
                 'utm_medium': 'afiliacion',

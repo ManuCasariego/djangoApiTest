@@ -2,9 +2,9 @@ from urllib.error import HTTPError
 from urllib.request import urlopen
 
 
-def getHTMLCode(link, offlineFile='', usingMock=False):
-    if usingMock:
-        file = open('/home/manu/PycharmProjects/scrappingAccommodations/data/' + offlineFile, 'r')
+def get_html_code(link, offline_file='', using_mock=False):
+    if using_mock:
+        file = open('/home/manu/PycharmProjects/scrappingAccommodations/data/' + offline_file, 'r')
         html = file.read()
         file.close()
         return html
