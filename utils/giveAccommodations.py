@@ -1,3 +1,6 @@
+from scrapGlobal import getJsonAccommodations
+
+
 def get_accommodations(filters={}):
     response_data = {}
     response_data['title'] = 'Title 1'
@@ -6,6 +9,8 @@ def get_accommodations(filters={}):
     response_data['type'] = ['bed', 'bed2']
     response_data = merge_2_dictionaries(response_data, filters)
     # response_data['extra'] = filters.get('manu2', '')
+
+    response_data = getJsonAccommodations(filters)
     return response_data
 
 

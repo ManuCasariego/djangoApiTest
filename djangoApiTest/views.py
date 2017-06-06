@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from util.giveAccommodations import get_accommodations
+from utils.giveAccommodations import get_accommodations
 
 
 @csrf_exempt
@@ -10,7 +10,7 @@ def accommodations(request):
     List all code snippets, or create a new snippet.
     """
 
-    return JsonResponse(get_accommodations({'ip': get_client_ip(request)}))
+    return JsonResponse(get_accommodations({'ip': get_client_ip(request)}), safe=False)
 
 
 def get_client_ip(request):
