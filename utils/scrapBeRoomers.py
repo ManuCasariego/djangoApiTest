@@ -6,7 +6,7 @@ from utils.parametersUtils import add_paramaters_to_link
 from utils.htmlUtils import get_html_code
 
 
-def applyFiltersBeRoomers(link, filters):
+def apply_filters_be_roomers(link, filters):
     parameters = {}
 
     city = filters.get('city', '')
@@ -37,7 +37,7 @@ def applyFiltersBeRoomers(link, filters):
     if 'shared-room' in type:
         type.remove('shared-room')
 
-    addedTheTypeFlag = False
+    added_the_type_flag = False
     if type:
         types = ''
         for t in type:
@@ -45,24 +45,24 @@ def applyFiltersBeRoomers(link, filters):
                 types += '%2C'
             if t == 'full-apartment':
                 types += 'complete-apartment'
-                if not addedTheTypeFlag:
+                if not added_the_type_flag:
                     link += '/apartments-for-rent'
-                    addedTheTypeFlag = True
+                    added_the_type_flag = True
             elif t == 'room':
                 types += 'shared-flat'
-                if not addedTheTypeFlag:
+                if not added_the_type_flag:
                     link += '/rooms-for-rent'
-                    addedTheTypeFlag = True
+                    added_the_type_flag = True
             elif t == 'host-family':
                 types += 'host-family'
-                if not addedTheTypeFlag:
+                if not added_the_type_flag:
                     link += '/homestay'
-                    addedTheTypeFlag = True
+                    added_the_type_flag = True
             elif t == 'residence':
                 types += 'student-hall'
-                if not addedTheTypeFlag:
+                if not added_the_type_flag:
                     link += '/student-halls'
-                    addedTheTypeFlag = True
+                    added_the_type_flag = True
         parameters['type'] = types
 
     return add_paramaters_to_link(link, parameters)
@@ -71,9 +71,9 @@ def applyFiltersBeRoomers(link, filters):
 def beRoomersAccommodations(filters={}):
     accommodations = []
     link = 'https://www.beroomers.com/s/madrid-spain'
-    link = applyFiltersBeRoomers(link, filters)
+    link = apply_filters_be_roomers(link, filters)
     print(link)
-    HTMLCode = get_html_code(link, offlineFile='pruebacodeberoomers.html', usingMock=False)
+    HTMLCode = get_html_code(link, offline_file='pruebacodeberoomers.html', using_mock=False)
     if HTMLCode is not None:
         bsObj = BeautifulSoup(HTMLCode, 'html.parser')
 

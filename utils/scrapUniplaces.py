@@ -6,7 +6,8 @@ from utils.parametersUtils import add_paramaters_to_link
 from utils.htmlUtils import get_html_code
 
 
-def applyFiltersUniplaces(link, filters):
+def apply_filters_uniplaces(link, filters):
+    # Get the filters
     city = filters.get('city', '')
     checkin = filters.get('checkin', '')
     checkout = filters.get('checkout', '')
@@ -15,9 +16,11 @@ def applyFiltersUniplaces(link, filters):
     type_copy = filters.get('type', [])
     type = list(type_copy)
 
+    # Change the city
     if city != '':
         link = link.replace('madrid', city)
 
+    # Set the parameters
     parameters = {}
 
     if checkin != '':
@@ -57,10 +60,10 @@ def applyFiltersUniplaces(link, filters):
 
 def uniplacesAccommodations(filters={}):
     link = 'http://www.uniplaces.com/accommodation/madrid'
-    link = applyFiltersUniplaces(link, filters)
+    link = apply_filters_uniplaces(link, filters)
     print(link)
 
-    HTMLCode = get_html_code(link, offlineFile='pruebacodigouniplaces.html', usingMock=False)
+    HTMLCode = get_html_code(link, offline_file='pruebacodigouniplaces.html', using_mock=False)
     bsObj = BeautifulSoup(HTMLCode, 'html.parser')
 
     titles = bsObj.findAll('a', {'class': 'offer-summary__main-link'})

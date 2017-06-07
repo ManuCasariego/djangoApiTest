@@ -10,8 +10,8 @@ def accommodations(request):
     """
     List all code snippets, or create a new snippet.
     """
-
-    return JsonResponse(getJsonAccommodations({'ip': get_client_ip(request)}), safe=False)
+    # TODO: pickup the request.get items and pass them to the getJsonAccommodations
+    return JsonResponse(getJsonAccommodations(), safe=False)
 
 
 def get_client_ip(request):
