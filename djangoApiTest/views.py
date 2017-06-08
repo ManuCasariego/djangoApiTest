@@ -1,7 +1,6 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-from utils.giveAccommodations import get_accommodations
 from utils.scrapGlobal import getJsonAccommodations
 
 
@@ -21,6 +20,7 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
+
 
 # TODO: Probe when up
 def get_client_ip(request):

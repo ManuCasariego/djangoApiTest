@@ -1,8 +1,6 @@
 import json
 
-import scrapUniplaces
-
-from utils import scrapBeRoomers
+from utils import scrapUniplaces, scrapBeRoomers
 
 
 def saveToFile(data, fileName):
@@ -26,7 +24,6 @@ def getJsonAccommodations(filters={}):
 
     return accommodations
 
-
 # # TODO: meter filtros de prueba aqui
 # # TODO: faltan la busqueda de barrios/universidades
 # filters = dict()
@@ -37,5 +34,3 @@ def getJsonAccommodations(filters={}):
 # filters['maxPrice'] = '1000'
 # filters['type'] = ['shared-room', 'room']
 # getJsonAccommodations(filters=filters)
-
-
