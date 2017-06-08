@@ -16,7 +16,6 @@ def apply_filters_be_roomers(link, filters):
     maxPrice = filters.get('maxPrice', '')
     type_aux = filters.get('type', [])
     type = list(type_aux)
-    print(len(type))
 
     if city != '':
         if city == 'london':
