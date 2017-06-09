@@ -4,7 +4,7 @@ from utils import scrapUniplaces, scrapBeRoomers
 
 
 def saveToFile(data, fileName):
-    file = open(fileName + '.json', 'w')
+    file = open(fileName + '.json', 'w+')
     json.dump(data, file)
     file.close()
 
@@ -14,12 +14,12 @@ def getJsonAccommodations(filters={}):
 
     # Requiring beRoomers accommodations
     beRoomers = scrapBeRoomers.beRoomersAccommodations(filters)
-    saveToFile(beRoomers, '../data/salidaBeRoomers')
+    # saveToFile(beRoomers, '../data/salidaBeRoomers')
     accommodations = accommodations + beRoomers
 
     # Requiring Uniplaces accommodations
     uniplaces = scrapUniplaces.uniplacesAccommodations(filters)
-    saveToFile(uniplaces, '../data/salidaUniplaces')
+    # saveToFile(uniplaces, '../data/salidaUniplaces')
     accommodations = accommodations + uniplaces
 
     return accommodations
