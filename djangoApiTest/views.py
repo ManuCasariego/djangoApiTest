@@ -1,6 +1,8 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
+from utils.scrapGlobal import getJsonAccommodations
+
 
 @csrf_exempt
 def accommodations(request):
@@ -12,7 +14,7 @@ def accommodations(request):
 
     filter_dictionary = request.GET
 
-    return JsonResponse(filter_dictionary, safe=False)
+    return JsonResponse(getJsonAccommodations(filter_dictionary), safe=False)
 
 
 def get_client_ip(request):
