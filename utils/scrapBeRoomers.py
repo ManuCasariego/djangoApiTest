@@ -96,6 +96,7 @@ def beRoomersAccommodations(filters={}):
 
         city = filters.get('city', '')
 
+
         for price in prices:
             if city == 'london':
                 prices_string.append(price['content'] + '£')

@@ -86,6 +86,7 @@ def uniplacesAccommodations(filters={}):
 
     prices = bsObj.findAll('div', {'class': 'price'})
     prices_string = []
+
     for price in prices:
         prices_string.append(price.get_text().strip()
                              #                          .replace('€', '')
