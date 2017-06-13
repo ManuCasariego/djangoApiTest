@@ -23,6 +23,8 @@ def getJsonAccommodations(filters={}):
     # saveToFile(uniplaces, '../data/salidaUniplaces')
     accommodations = accommodations + uniplaces
 
+    random.shuffle(accommodations)
+
     return accommodations
 
 # # TODO: meter filtros de prueba aqui
