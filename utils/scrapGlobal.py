@@ -1,4 +1,5 @@
 import json
+import random
 
 from utils import scrapUniplaces, scrapBeRoomers
 
@@ -22,7 +23,7 @@ def getJsonAccommodations(filters={}):
     # saveToFile(uniplaces, '../data/salidaUniplaces')
     accommodations = accommodations + uniplaces
 
-    return accommodations
+    return random.shuffle(accommodations)
 
 # # TODO: meter filtros de prueba aqui
 # # TODO: faltan la busqueda de barrios/universidades
