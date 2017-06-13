@@ -88,8 +88,8 @@ def uniplacesAccommodations(filters={}):
     prices_string = []
     for price in prices:
         prices_string.append(price.get_text().strip()
-                             .replace('€', '')
-                             .replace('£', '')
+                             #                          .replace('€', '')
+                             #                          .replace('£', '')
                              .replace(' ', ''))
 
     pictures = bsObj.findAll('div', {'class': 'owl-carousel'})

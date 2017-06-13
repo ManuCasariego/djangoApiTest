@@ -94,8 +94,13 @@ def beRoomersAccommodations(filters={}):
 
         prices = bsObj.findAll('span', {'class': 'BoxPrice-price'})
 
+        city = filters.get('city', '')
+
         for price in prices:
-            prices_string.append(price['content'])
+            if city == 'london':
+                prices_string.append(price['content'] + '£')
+            else:
+                prices_string.append(price['content'] + '€')
 
         results = re.findall(pattern=r'coordinates":{"lat":.*?,.*?,', string=HTMLCode)
 
