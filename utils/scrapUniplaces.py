@@ -134,14 +134,16 @@ def uniplacesAccommodations(filters={}):
 
     accommodations = []
     for i in range(len(titles_string)):
-        accommodation = {'title': titles_string[i],
-                         'link': links_string[i],
-                         'typology': typologies_string[i],
-                         # 'neighbourhood': neighbourhoods_string[i],
-                         'price': prices_string[i],
-                         'picture': pictures_string[i],
-                         'latitude': latitudes_string[i],
-                         'longitude': longitudes_string[i]}
+        accommodation = {
+            'title': titles_string[i],
+            'link': links_string[i],
+            'typology': typologies_string[i],
+            # 'neighbourhood': neighbourhoods_string[i],
+            'price': prices_string[i],
+            'picture': pictures_string[i],
+            'latitude': latitudes_string[i],
+            'longitude': longitudes_string[i],
+            'provider': 'Uniplaces'}
 
         accommodations.append(accommodation)
 

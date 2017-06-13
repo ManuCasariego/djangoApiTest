@@ -9,8 +9,12 @@ def accommodations(request):
     """
     List all code snippets, or create a new snippet.
     """
-    # TODO: pickup the request.get items and pass them to the getJsonAccommodations
-    return JsonResponse(getJsonAccommodations(), safe=False)
+    # TODO: only obbey the front ip
+    client_ip = get_client_ip(request)
+
+    filter_dictionary = request.GET
+
+    return JsonResponse(getJsonAccommodations(filter_dictionary), safe=False)
 
 
 def get_client_ip(request):
@@ -20,8 +24,3 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
-
-
-# TODO: Probe when up
-def get_client_ip(request):
-    return request.get_host()

@@ -131,7 +131,8 @@ def beRoomersAccommodations(filters={}):
                 'price': prices_string[i],
                 'picture': pictures_string[i],
                 'latitude': latitudes_string[i],
-                'longitude': longitudes_string[i]
+                'longitude': longitudes_string[i],
+                'provider': 'BeRoomers'
             }
             accommodations.append(accommodation)
 
