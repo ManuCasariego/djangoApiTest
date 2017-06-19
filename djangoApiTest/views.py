@@ -12,7 +12,7 @@ def accommodations(request):
     # TODO: only obbey the front ip
     client_ip = get_client_ip(request)
 
-    filter_dictionary = request.GET
+    filter_dictionary = request.GET.copy()
 
     return JsonResponse(getJsonAccommodations(filter_dictionary), safe=False)
 
