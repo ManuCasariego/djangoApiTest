@@ -17,9 +17,8 @@ def apply_filters_be_roomers(link, filters):
     type_aux = filters.get('type', [])
     type = list(type_aux)
 
-    if city != '':
-        if city == 'london':
-            link = link.replace('madrid-spain', 'london-united-kingdom')
+    # Change the city
+    link = link.replace('madrid-spain', city)
 
     if checkin != '':
         parameters['checkin'] = checkin

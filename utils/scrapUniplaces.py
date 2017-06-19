@@ -17,8 +17,7 @@ def apply_filters_uniplaces(link, filters):
     type = list(type_copy)
 
     # Change the city
-    if city != '':
-        link = link.replace('madrid', city)
+    link = link.replace('madrid', city)
 
     # Set the parameters
     parameters = {}
