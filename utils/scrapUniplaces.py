@@ -75,7 +75,12 @@ def uniplacesAccommodations(filters={}):
     typologies = bsObj.findAll('div', {'class': 'offer-summary__tipology'})
     typologies_string = []
     for typology in typologies:
-        typologies_string.append(typology.get_text().strip())
+        tipology_aux = typology.get_text().strip()
+        if tipology_aux == 'Entire property':
+            tipology_aux = 'Full Apartment'
+        if tipology_aux == 'Bed':
+            tipology_aux = 'Shared Room'
+        typologies_string.append(tipology_aux)
 
     # No todos los pisos tienen barrio, en las otras paginas web no aparece tampoco
     neighbourhoods = bsObj.findAll('div', {'class': 'offer-summary__neighbourhood'})

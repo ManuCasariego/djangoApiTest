@@ -87,8 +87,15 @@ def beRoomersAccommodations(filters={}):
         for link in links:
             links_string.append(link.findAll('a')[0]['href'])
             pictures_string.append(link.findAll('div', {'class': 'image-gallery-slide'})[0].img['src'])
-            typologies_string.append(
-                link.findAll('div', {'class': 'ProductCardMainProperties-type'})[0].span.get_text())
+            tipology = link.findAll('div', {'class': 'ProductCardMainProperties-type'})[0].span.get_text()
+            if tipology == 'Shared Flat' or tipology == 'Piso Compartido':
+                tipology = 'Bedroom'
+            elif tipology == 'Complete Apartment' or tipology == 'Apartamento Completo':
+                tipology = 'Full Apartment'
+            elif tipology == 'Student Hall' or tipology == 'Residencia':
+                tipology = 'Residence'
+
+            typologies_string.append(tipology)
             titles_string.append(link.findAll('span', {'class': 'ProductCardMainProperties-info-title'})[0].get_text())
 
         prices = bsObj.findAll('span', {'class': 'BoxPrice-price'})
