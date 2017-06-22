@@ -83,6 +83,7 @@ def beRoomersAccommodations(filters={}):
         prices_string = []
         latitudes_string = []
         longitudes_string = []
+        bills_string = []
 
         for link in links:
             links_string.append(link.findAll('a')[0]['href'])
@@ -104,6 +105,15 @@ def beRoomersAccommodations(filters={}):
             prices_string.append(price.get_text())
 
         results = re.findall(pattern=r'coordinates":{"lat":.*?,.*?,', string=HTMLCode)
+
+        bills = bsObj.findAll('span', {'class': 'BoxPrice-billsIncluded-label'})
+
+        for bill in bills:
+            bill_aux = bill.get_text()
+            if bill_aux == 'Bills Included':
+                bills_string.append('all bills included')
+            else:
+                bills_string.append('some bills included')
 
         for result in results:
             latitudes_string.append(result.split('"lat":')[1].split(',')[0])
@@ -133,6 +143,7 @@ def beRoomersAccommodations(filters={}):
                 'picture': pictures_string[i],
                 'latitude': latitudes_string[i],
                 'longitude': longitudes_string[i],
+                'bills': bills_string[i],
                 'provider': 'BeRoomers'
             }
             accommodations.append(accommodation)

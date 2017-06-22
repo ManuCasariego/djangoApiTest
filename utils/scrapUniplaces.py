@@ -95,6 +95,20 @@ def uniplacesAccommodations(filters={}):
         prices_string.append(price.get_text().strip()
                              .replace(' ', ''))
 
+    bills_string = []
+    bills = bsObj.findAll('div', {'class': 'offer-summary__price'})
+
+    for bill in bills:
+        hasAllBills = False
+        for child in bill.findChildren():
+            if child.has_attr('class'):
+                if child['class'][0] == 'offer-summary__bills':
+                    hasAllBills = True
+        if hasAllBills:
+            bills_string.append('all bills included')
+        else:
+            bills_string.append('some bills included')
+
     pictures = bsObj.findAll('div', {'class': 'owl-carousel'})
     pictures_string = []
     for picture in pictures:
@@ -146,6 +160,7 @@ def uniplacesAccommodations(filters={}):
             'picture': pictures_string[i],
             'latitude': latitudes_string[i],
             'longitude': longitudes_string[i],
+            'bills': bills_string[i],
             'provider': 'Uniplaces'}
 
         accommodations.append(accommodation)
