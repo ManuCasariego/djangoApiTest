@@ -11,6 +11,16 @@ def saveToFile(data, fileName):
     file.close()
 
 
+def join_two_lists(list1, list2):
+    num = min(len(list1), len(list2))
+    result = [None] * (num * 2)
+    result[::2] = list1[:num]
+    result[1::2] = list2[:num]
+    result.extend(list1[num:])
+    result.extend(list2[num:])
+    return result
+
+
 def getJsonAccommodations(filters={}):
     accommodations = []
 
@@ -32,7 +42,8 @@ def getJsonAccommodations(filters={}):
     # saveToFile(beRoomers, '../data/salidaBeRoomers')
     accommodations = accommodations + beRoomers
 
-    random.shuffle(accommodations)
+    # random.shuffle(accommodations)
+    accommodations = join_two_lists(uniplaces, beRoomers)
 
     return accommodations
 
