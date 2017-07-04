@@ -15,7 +15,13 @@ def apply_filters_be_roomers(link, filters):
     minPrice = filters.get('minPrice', '')
     maxPrice = filters.get('maxPrice', '')
     type_aux = filters.get('type', [])
+
     type = list(type_aux)
+
+    topRightLat = filters.get('topRightLat', '')
+    topRightLng = filters.get('topRightLng', '')
+    bottomLeftLat = filters.get('bottomLeftLat', '')
+    bottomLeftLng = filters.get('bottomLeftLng', '')
 
     # Change the city
     link = link.replace('madrid-spain', city)
@@ -62,6 +68,12 @@ def apply_filters_be_roomers(link, filters):
                     link += '/student-halls'
                     added_the_type_flag = True
         parameters['type'] = types
+
+    if topRightLat != '':
+        parameters['topLeftLat'] = topRightLat
+        parameters['bottomRightLng'] = topRightLng
+        parameters['bottomRightLat'] = bottomLeftLat
+        parameters['topLeftLng'] = bottomLeftLng
 
     return add_paramaters_to_link(link, parameters)
 

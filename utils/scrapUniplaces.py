@@ -14,7 +14,13 @@ def apply_filters_uniplaces(link, filters):
     minPrice = filters.get('minPrice', '')
     maxPrice = filters.get('maxPrice', '')
     type_copy = filters.get('type', [])
+
     type = list(type_copy)
+
+    topRightLat = filters.get('topRightLat', '')
+    topRightLng = filters.get('topRightLng', '')
+    bottomLeftLat = filters.get('bottomLeftLat', '')
+    bottomLeftLng = filters.get('bottomLeftLng', '')
 
     # Change the city
     link = link.replace('madrid', city)
@@ -54,6 +60,12 @@ def apply_filters_uniplaces(link, filters):
             elif t == 'residence':
                 parameters['accommodation-types[]'] = 'residence'
 
+    if topRightLat != '':
+        parameters['north'] = topRightLat
+        parameters['east'] = topRightLng
+        parameters['south'] = bottomLeftLat
+        parameters['west'] = bottomLeftLng
+
     return add_paramaters_to_link(link, parameters)
 
 
@@ -71,13 +83,9 @@ def uniplacesAccommodations(filters={}):
     for title in titles:
         titles_string.append(title.get_text().strip())
 
-    print(len(titles_string))
-
     links = bsObj.findAll('div', {'class': 'offer-summary__description'})
     for link in links:
         links_string.append(link.find_all('span')[0].get('content'))
-
-    print(len(links_string))
 
     typologies = bsObj.findAll('div', {'class': 'offer-summary__tipology'})
     typologies_string = []
@@ -88,8 +96,6 @@ def uniplacesAccommodations(filters={}):
         if tipology_aux == 'Bed':
             tipology_aux = 'Shared Room'
         typologies_string.append(tipology_aux)
-
-    print(len(typologies_string))
 
     # No todos los pisos tienen barrio, en las otras paginas web no aparece tampoco
     neighbourhoods = bsObj.findAll('div', {'class': 'offer-summary__neighbourhood'})
@@ -103,8 +109,6 @@ def uniplacesAccommodations(filters={}):
     for price in prices:
         prices_string.append(price.get_text().strip()
                              .replace(' ', ''))
-
-    print(len(prices_string))
 
     bills_string = []
     bills = bsObj.findAll('div', {'class': 'offer-summary__price'})
@@ -120,13 +124,10 @@ def uniplacesAccommodations(filters={}):
         else:
             bills_string.append('some bills included')
 
-    print(len(bills_string))
-
     pictures = bsObj.findAll('div', {'class': 'owl-carousel'})
     pictures_string = []
     for picture in pictures:
         pictures_string.append(picture.findAll('div')[0].get('data-src'))
-    print('pictures len = ', len(pictures_string))
 
     geoposs = bsObj.findAll('div', {'class': 'offer-geo'})
     latitudes_string = []
@@ -134,9 +135,6 @@ def uniplacesAccommodations(filters={}):
     for geopos in geoposs:
         latitudes_string.append(geopos['data-lat'])
         longitudes_string.append(geopos['data-long'])
-
-    print(len(latitudes_string))
-    print(len(longitudes_string))
 
     # Reformat links (and add tracker)
 
@@ -166,8 +164,6 @@ def uniplacesAccommodations(filters={}):
 
         links_string[i] = 'http://uniplaces.7eer.net/c/352294/206497/3534?u=' + links_string[i]
 
-
-
     # Here is where the magic comes true
 
     titles_string_aux = []
@@ -189,7 +185,6 @@ def uniplacesAccommodations(filters={}):
     typologies_string = tipologies_string_aux
     prices_string = prices_string_aux
     bills_string = bills_string_aux
-
 
     accommodations = []
     for i in range(len(titles_string)):
