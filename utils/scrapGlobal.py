@@ -31,16 +31,21 @@ def getJsonAccommodations(filters={}):
 
     # Requiring Uniplaces accommodations
     filters['city'] = city[1]
-    uniplaces = scrapUniplaces.uniplacesAccommodations(filters)
-    # saveToFile(uniplaces, '../data/salidaUniplaces')
-    accommodations = accommodations + uniplaces
+    if city[1] != '':
+        uniplaces = scrapUniplaces.uniplacesAccommodations(filters)
+        # saveToFile(uniplaces, '../data/salidaUniplaces')
+        accommodations = accommodations + uniplaces
+    else:
+        uniplaces = []
 
     # Requiring beRoomers accommodations
     filters['city'] = city[2]
-
-    beRoomers = scrapBeRoomers.beRoomersAccommodations(filters)
-    # saveToFile(beRoomers, '../data/salidaBeRoomers')
-    accommodations = accommodations + beRoomers
+    if city[2] != '':
+        beRoomers = scrapBeRoomers.beRoomersAccommodations(filters)
+        # saveToFile(beRoomers, '../data/salidaBeRoomers')
+        accommodations = accommodations + beRoomers
+    else:
+        beRoomers = []
 
     # random.shuffle(accommodations)
     accommodations = join_two_lists(uniplaces, beRoomers)
