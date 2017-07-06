@@ -173,7 +173,7 @@ def uniplacesAccommodations(filters={}):
     bills_string_aux = []
 
     for i in range(len(titles_string)):
-        if '-' not in prices_string[i]:
+        if '-' not in prices_string[i] and 'All' not in prices_string[i]:
             titles_string_aux.append(titles_string[i])
             links_string_aux.append(links_string[i])
             tipologies_string_aux.append(typologies_string[i])
@@ -187,19 +187,20 @@ def uniplacesAccommodations(filters={}):
     bills_string = bills_string_aux
 
     accommodations = []
-    for i in range(len(titles_string)):
-        accommodation = {
-            'title': titles_string[i],
-            'link': links_string[i],
-            'typology': typologies_string[i],
-            # 'neighbourhood': neighbourhoods_string[i],
-            'price': prices_string[i],
-            'picture': pictures_string[i],
-            'latitude': latitudes_string[i],
-            'longitude': longitudes_string[i],
-            'bills': bills_string[i],
-            'provider': 'Uniplaces'}
+    if len(titles_string) == len(links_string) == len(typologies_string) == len(prices_string) == len(pictures_string) == len(latitudes_string) == len(longitudes_string) == len(bills_string):
+        for i in range(len(titles_string)):
+            accommodation = {
+                'title': titles_string[i],
+                'link': links_string[i],
+                'typology': typologies_string[i],
+                # 'neighbourhood': neighbourhoods_string[i],
+                'price': prices_string[i],
+                'picture': pictures_string[i],
+                'latitude': latitudes_string[i],
+                'longitude': longitudes_string[i],
+                'bills': bills_string[i],
+                'provider': 'Uniplaces'}
 
-        accommodations.append(accommodation)
+            accommodations.append(accommodation)
 
     return accommodations
