@@ -156,6 +156,8 @@ def uniplacesAccommodations(filters={}):
 
         links_string[i] = add_paramaters_to_link(links_string[i], parameters)
 
+        links_string[i] = links_string[i].replace('/en', '')
+
         links_string[i] = links_string[i].replace(':', '%3A') \
             .replace('/', '%2F') \
             .replace('?', '%3F') \
