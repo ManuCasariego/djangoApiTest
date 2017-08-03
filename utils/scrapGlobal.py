@@ -26,14 +26,16 @@ def join_three_lists(list1, list2, list3):
     result[::3] = list1[:num]
     result[1::3] = list2[:num]
     result[2::3] = list3[:num]
-    result.extend(list1[num:])
-    result.extend(list2[num:])
-    result.extend(list3[num:])
+    if len(list1) == num:
+        result.extend(join_two_lists(list2[num:], list3[num:]))
+    elif len(list2) == num:
+        result.extend(join_two_lists(list1[num:], list3[num:]))
+    if len(list3) == num:
+        result.extend(join_two_lists(list1[num:], list2[num:]))
     return result
 
 
 def getJsonAccommodations(filters={}):
-
     # Adapt cities
     city = adaptCities(filters)
     type = get_types_array(filters.get('type', ''))
