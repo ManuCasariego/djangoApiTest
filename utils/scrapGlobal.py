@@ -1,7 +1,6 @@
 import json
-import random
 
-from utils import scrapUniplaces, scrapBeRoomers
+from utils import scrapUniplaces, scrapBeRoomers, scrapStudyAbroadApartments
 from utils.parametersUtils import adaptCities, get_types_array
 
 
@@ -21,8 +20,19 @@ def join_two_lists(list1, list2):
     return result
 
 
+def join_three_lists(list1, list2, list3):
+    num = min(len(list1), len(list2), len(list3))
+    result = [None] * (num * 3)
+    result[::3] = list1[:num]
+    result[1::3] = list2[:num]
+    result[2::3] = list3[:num]
+    result.extend(list1[num:])
+    result.extend(list2[num:])
+    result.extend(list3[num:])
+    return result
+
+
 def getJsonAccommodations(filters={}):
-    accommodations = []
 
     # Adapt cities
     city = adaptCities(filters)
@@ -34,7 +44,6 @@ def getJsonAccommodations(filters={}):
     if city[1] != '':
         uniplaces = scrapUniplaces.uniplacesAccommodations(filters)
         # saveToFile(uniplaces, '../data/salidaUniplaces')
-        accommodations = accommodations + uniplaces
     else:
         uniplaces = []
 
@@ -43,22 +52,20 @@ def getJsonAccommodations(filters={}):
     if city[2] != '':
         beRoomers = scrapBeRoomers.beRoomersAccommodations(filters)
         # saveToFile(beRoomers, '../data/salidaBeRoomers')
-        accommodations = accommodations + beRoomers
     else:
         beRoomers = []
 
+    # Requiring studyAbroadApartments accommodations
+    filters['city'] = city[3]
+    if city[3] != '':
+        studyAbroadApartments = []
+        pass
+        # TODO: studyAbroad needs time
+        # studyAbroadApartments = scrapStudyAbroadApartments.studyAbroadApartmentsAccommodations(filters)
+    else:
+        studyAbroadApartments = []
+
     # random.shuffle(accommodations)
-    accommodations = join_two_lists(uniplaces, beRoomers)
+    accommodations = join_three_lists(uniplaces, beRoomers, studyAbroadApartments)
 
     return accommodations
-
-# # TODO: meter filtros de prueba aqui
-# # TODO: faltan la busqueda de barrios/universidades
-# filters = dict()
-# filters['city'] = 'madrid'
-# filters['checkin'] = '02-01-2018'
-# filters['checkout'] = '03-08-2018'
-# filters['minPrice'] = '200'
-# filters['maxPrice'] = '1000'
-# filters['type'] = ['shared-room', 'room']
-# getJsonAccommodations(filters=filters)

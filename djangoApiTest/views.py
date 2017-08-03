@@ -9,7 +9,6 @@ def accommodations(request):
     """
     List all code snippets, or create a new snippet.
     """
-    # TODO: only obbey the front ip
     client_ip = get_client_ip(request)
 
     filter_dictionary = request.GET.copy()
