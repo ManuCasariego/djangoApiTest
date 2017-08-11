@@ -60,10 +60,8 @@ def getJsonAccommodations(filters={}):
     # Requiring studyAbroadApartments accommodations
     filters['city'] = city[3]
     if city[3] != '':
-        studyAbroadApartments = []
-        pass
         # TODO: studyAbroad needs time
-        # studyAbroadApartments = scrapStudyAbroadApartments.studyAbroadApartmentsAccommodations(filters)
+        studyAbroadApartments = scrapStudyAbroadApartments.studyAbroadApartmentsAccommodations(filters)
     else:
         studyAbroadApartments = []
 

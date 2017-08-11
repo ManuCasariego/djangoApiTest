@@ -103,6 +103,11 @@ def studyAbroadAccommodations():
             latitude = str(latitude)
             longitude = str(longitude)
 
+            if latitude == 'None':
+                latitude = str(40.40)
+            if longitude == 'None':
+                longitude = str(-3.68)
+
             # typology
             typology = accommodation.get('apart_type', 'room')
 
@@ -285,5 +290,6 @@ def studyAbroadAccommodations():
         file = open(filename, 'w+')
         json.dump(accommodations_valencia, file)
         file.close()
+
 
 studyAbroadAccommodations()
