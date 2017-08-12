@@ -152,7 +152,7 @@ def studyAbroadApartmentsAccommodations(filters=None):
         if every_filter_is_passed:
             accommodations_to_return.append(accommodation)
 
-    accommodations_to_return = accommodations_to_return[0:200]
+    accommodations_to_return = accommodations_to_return[0:201]
     return accommodations_to_return
 
 #
