@@ -66,6 +66,9 @@ def studyAbroadApartmentsAccommodations(filters=None):
             else:
                 every_filter_is_passed = False
 
+        if maxPrice == '':
+            maxPrice = '1000'
+
         if maxPrice != '' and every_filter_is_passed:
             maxPrice = int(maxPrice)
             if price <= maxPrice:
