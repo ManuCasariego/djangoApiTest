@@ -151,7 +151,7 @@ def studyAbroadAccommodations():
                 link_string: link,
                 latitude_string: latitude,
                 longitude_string: longitude,
-                provider_string: 'StudyAbroadApartments',
+                provider_string: 'StudyAbroadAp',
                 typology_string: typology,
                 picture_string: picture,
                 bills_string: 'all bills included',
