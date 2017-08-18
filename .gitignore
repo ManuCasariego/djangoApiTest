@@ -105,3 +105,5 @@ data/*.json
 **/.idea/tasks.xml
 
 settings_secret.py
+
+data/*.txt
