@@ -19,5 +19,5 @@ from djangoApiTest import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accommodations/', views.accommodations)
+    url(r'^accommodations/', views.accommodations),
 ]
