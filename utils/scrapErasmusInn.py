@@ -57,7 +57,7 @@ def erasmusInnAccommodations(filters=None):
 
         # Price
 
-        price = int(price.replace('€', '').replace('$', '').replace('£', ''))
+        price = int(price.replace('€', '').replace('$', '').replace('£', '').replace('TRY', ''))
 
         if minPrice != '' and every_filter_is_passed:
             minPrice = int(minPrice)
