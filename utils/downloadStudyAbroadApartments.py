@@ -94,7 +94,7 @@ def studyAbroadAccommodations():
             # link
             link = accommodation.get('link_path', '/madrid/rooms/velazquez-7a-room-8')
             link = 'https://www.studyabroadapartments.com' + link
-            link = link + '?referral=setafoot'
+            link = link + '?referral=SetAFoot'
 
             # latitude and longitude
             latitude = accommodation.get(latitude_string, 40.40)
