@@ -65,6 +65,21 @@ def erasmusInnAccommodations():
 
     accommodations = []
 
+    # Order the different accommodation in each city
+    accommodations_rome = []
+    accommodations_milan = []
+    accommodations_warsaw = []
+    accommodations_istanbul = []
+    accommodations_madrid = []
+    accommodations_barcelona = []
+    accommodations_poznan = []
+    accommodations_berlin = []
+    accommodations_lodz = []
+    accommodations_granada = []
+    accommodations_london = []
+    accommodations_florence = []
+    accommodations_zaragoza = []
+
     cities = {}
 
     for i in range(number_of_pages):
@@ -200,20 +215,7 @@ def erasmusInnAccommodations():
                 occupancies_string: [],
             })
 
-        # Order the different accommodation in each city
-        accommodations_rome = []
-        accommodations_milan = []
-        accommodations_warsaw = []
-        accommodations_istanbul = []
-        accommodations_madrid = []
-        accommodations_barcelona = []
-        accommodations_poznan = []
-        accommodations_berlin = []
-        accommodations_lodz = []
-        accommodations_granada = []
-        accommodations_london = []
-        accommodations_florence = []
-        accommodations_zaragoza = []
+
 
         for accommodation in accommodations:
             city = accommodation.get('city')
@@ -245,21 +247,21 @@ def erasmusInnAccommodations():
             elif city == 'zaragoza':
                 accommodations_zaragoza.append(accommodation)
 
-        dir = os.path.dirname(__file__)
-        save_to_file(dir, accommodations, 'data_erasmusInn')
-        save_to_file(dir, accommodations_rome, 'accommodations_eri_rome')
-        save_to_file(dir, accommodations_milan, 'accommodations_eri_milan')
-        save_to_file(dir, accommodations_warsaw, 'accommodations_eri_warsaw')
-        save_to_file(dir, accommodations_istanbul, 'accommodations_eri_istanbul')
-        save_to_file(dir, accommodations_madrid, 'accommodations_eri_madrid')
-        save_to_file(dir, accommodations_barcelona, 'accommodations_eri_barcelona')
-        save_to_file(dir, accommodations_poznan, 'accommodations_eri_poznan')
-        save_to_file(dir, accommodations_berlin, 'accommodations_eri_berlin')
-        save_to_file(dir, accommodations_lodz, 'accommodations_eri_lodz')
-        save_to_file(dir, accommodations_granada, 'accommodations_eri_granada')
-        save_to_file(dir, accommodations_london, 'accommodations_eri_london')
-        save_to_file(dir, accommodations_florence, 'accommodations_eri_florence')
-        save_to_file(dir, accommodations_zaragoza, 'accommodations_eri_zaragoza')
+    dir = os.path.dirname(__file__)
+    save_to_file(dir, accommodations, 'data_erasmusInn')
+    save_to_file(dir, accommodations_rome, 'accommodations_eri_rome')
+    save_to_file(dir, accommodations_milan, 'accommodations_eri_milan')
+    save_to_file(dir, accommodations_warsaw, 'accommodations_eri_warsaw')
+    save_to_file(dir, accommodations_istanbul, 'accommodations_eri_istanbul')
+    save_to_file(dir, accommodations_madrid, 'accommodations_eri_madrid')
+    save_to_file(dir, accommodations_barcelona, 'accommodations_eri_barcelona')
+    save_to_file(dir, accommodations_poznan, 'accommodations_eri_poznan')
+    save_to_file(dir, accommodations_berlin, 'accommodations_eri_berlin')
+    save_to_file(dir, accommodations_lodz, 'accommodations_eri_lodz')
+    save_to_file(dir, accommodations_granada, 'accommodations_eri_granada')
+    save_to_file(dir, accommodations_london, 'accommodations_eri_london')
+    save_to_file(dir, accommodations_florence, 'accommodations_eri_florence')
+    save_to_file(dir, accommodations_zaragoza, 'accommodations_eri_zaragoza')
 
 
 erasmusInnAccommodations()
