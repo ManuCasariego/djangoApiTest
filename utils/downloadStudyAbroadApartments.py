@@ -19,6 +19,14 @@ link_string = 'link'
 latitude_string = 'latitude'
 
 
+def save_to_file(dir_obj, accommodations_array, accommodations_name):
+    filename = os.path.join(dir_obj, '../data/' + accommodations_name + '.json')
+
+    file = open(filename, 'w+')
+    json.dump(accommodations_array, file)
+    file.close()
+
+
 def get_html_code(link):
     print('This link is going to be scraped: ' + link)
 
@@ -57,6 +65,20 @@ def studyAbroadAccommodations():
     print('There are %d pages.' % (number_of_pages))
 
     accommodations = []
+
+    # Order the different accommodation in each city
+    accommodations_new_york = []
+    accommodations_barcelona = []
+    accommodations_madrid = []
+    accommodations_florence = []
+    accommodations_granada = []
+    accommodations_london = []
+    accommodations_milan = []
+    accommodations_prague = []
+    accommodations_paris = []
+    accommodations_rome = []
+    accommodations_san_sebastian = []
+    accommodations_valencia = []
 
     for i in range(number_of_pages + 1):
         paging_link = 'https://www.studyabroadapartments.com/api/apartments.json?q=%7B%22page%22:' + str(i) + '%7D'
@@ -158,21 +180,6 @@ def studyAbroadAccommodations():
                 occupancies_string: new_occupancies
             })
 
-        # Order the different accommodation in each city
-
-        accommodations_new_york = []
-        accommodations_barcelona = []
-        accommodations_madrid = []
-        accommodations_florence = []
-        accommodations_granada = []
-        accommodations_london = []
-        accommodations_milan = []
-        accommodations_prague = []
-        accommodations_paris = []
-        accommodations_rome = []
-        accommodations_san_sebastian = []
-        accommodations_valencia = []
-
         for accommodation in accommodations:
             city = accommodation.get('city')
             if city == 'madrid':
@@ -200,96 +207,21 @@ def studyAbroadAccommodations():
             elif city == 'valencia':
                 accommodations_valencia.append(accommodation)
 
-        dir = os.path.dirname(__file__)
-        filename = os.path.join(dir, '../data/data.json')
+    dir = os.path.dirname(__file__)
 
-        file = open(filename, 'w+')
-        json.dump(accommodations, file)
-        file.close()
-
-        # madrid
-        filename = os.path.join(dir, '../data/accommodations_saa_madrid.json')
-
-        file = open(filename, 'w+')
-        json.dump(accommodations_madrid, file)
-        file.close()
-
-        # new-york
-        filename = os.path.join(dir, '../data/accommodations_saa_new_york.json')
-
-        file = open(filename, 'w+')
-        json.dump(accommodations_new_york, file)
-        file.close()
-
-        # barcelona
-        filename = os.path.join(dir, '../data/accommodations_saa_barcelona.json')
-
-        file = open(filename, 'w+')
-        json.dump(accommodations_barcelona, file)
-        file.close()
-
-        # florence
-        filename = os.path.join(dir, '../data/accommodations_saa_florence.json')
-
-        file = open(filename, 'w+')
-        json.dump(accommodations_florence, file)
-        file.close()
-
-        # granada
-        filename = os.path.join(dir, '../data/accommodations_saa_granada.json')
-
-        file = open(filename, 'w+')
-        json.dump(accommodations_granada, file)
-        file.close()
-
-        # london
-        filename = os.path.join(dir, '../data/accommodations_saa_london.json')
-
-        file = open(filename, 'w+')
-        json.dump(accommodations_london, file)
-        file.close()
-
-        # milan
-        filename = os.path.join(dir, '../data/accommodations_saa_milan.json')
-
-        file = open(filename, 'w+')
-        json.dump(accommodations_milan, file)
-        file.close()
-
-        # prague
-        filename = os.path.join(dir, '../data/accommodations_saa_prague.json')
-
-        file = open(filename, 'w+')
-        json.dump(accommodations_prague, file)
-        file.close()
-
-        # paris
-        filename = os.path.join(dir, '../data/accommodations_saa_paris.json')
-
-        file = open(filename, 'w+')
-        json.dump(accommodations_paris, file)
-        file.close()
-
-        # rome
-        filename = os.path.join(dir, '../data/accommodations_saa_rome.json')
-
-        file = open(filename, 'w+')
-        json.dump(accommodations_rome, file)
-        file.close()
-
-        # san-sebastian
-        filename = os.path.join(dir, '../data/accommodations_saa_san_sebastian.json')
-
-        file = open(filename, 'w+')
-        json.dump(accommodations_san_sebastian, file)
-        file.close()
-
-        # valencia
-        filename = os.path.join(dir, '../data/accommodations_saa_valencia.json')
-
-        file = open(filename, 'w+')
-        json.dump(accommodations_valencia, file)
-        file.close()
+    save_to_file(dir, accommodations, 'data_studyabroadapartments')
+    save_to_file(dir, accommodations, 'accommodations_saa_madrid')
+    save_to_file(dir, accommodations, 'accommodations_saa_new_york')
+    save_to_file(dir, accommodations, 'accommodations_saa_barcelona')
+    save_to_file(dir, accommodations, 'accommodations_saa_florence')
+    save_to_file(dir, accommodations, 'accommodations_saa_granada')
+    save_to_file(dir, accommodations, 'accommodations_saa_london')
+    save_to_file(dir, accommodations, 'accommodations_saa_milan')
+    save_to_file(dir, accommodations, 'accommodations_saa_prague')
+    save_to_file(dir, accommodations, 'accommodations_saa_paris')
+    save_to_file(dir, accommodations, 'accommodations_saa_rome')
+    save_to_file(dir, accommodations, 'accommodations_saa_san_sebastian')
+    save_to_file(dir, accommodations, 'accommodations_saa_valencia')
 
 
 studyAbroadAccommodations()
