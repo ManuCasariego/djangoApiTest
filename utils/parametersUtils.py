@@ -22,7 +22,7 @@ def get_types_array(types):
     if types == '':
         return []
     else:
-        return types.split('%2C')
+        return types.split(',')
 
 
 def adaptCities(filters):
