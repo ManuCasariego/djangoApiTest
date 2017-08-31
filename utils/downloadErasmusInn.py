@@ -2,9 +2,8 @@ import json
 import os
 from urllib.error import HTTPError
 from urllib.request import urlopen
+from downloadUtils import save_to_file
 
-# https://www.studyabroadapartments.com/api/apartments.json?q=%7B%22page%22:1%7D
-# https://www.studyabroadapartments.com/api/apartments.json?q=%7B"page":1%7D
 occupancies_string = 'occupancies'
 bills_string = 'bills'
 picture_string = 'picture'
@@ -17,14 +16,6 @@ price_string = 'price'
 longitude_string = 'longitude'
 link_string = 'link'
 latitude_string = 'latitude'
-
-
-def save_to_file(dir_obj, accommodations_array, accommodations_name):
-    filename = os.path.join(dir_obj, '../data/' + accommodations_name + '.json')
-
-    file = open(filename, 'w+')
-    json.dump(accommodations_array, file)
-    file.close()
 
 
 def get_html_code(link):
@@ -214,8 +205,6 @@ def erasmusInnAccommodations():
                 # occupancies_string: occupancies,
                 occupancies_string: [],
             })
-
-
 
         for accommodation in accommodations:
             city = accommodation.get('city')

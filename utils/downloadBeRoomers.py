@@ -2,6 +2,7 @@ import json
 import os
 from urllib.error import HTTPError
 from urllib.request import urlopen
+from downloadUtils import save_to_file
 
 # https://www.beroomers.com/load-more?page=2
 # https://www.beroomers.com/load-more?page=1
@@ -18,14 +19,6 @@ price_string = 'price'
 longitude_string = 'longitude'
 link_string = 'link'
 latitude_string = 'latitude'
-
-
-def save_to_file(dir_obj, accommodations_array, accommodations_name):
-    filename = os.path.join(dir_obj, '../data/' + accommodations_name + '.json')
-
-    file = open(filename, 'w+')
-    json.dump(accommodations_array, file)
-    file.close()
 
 
 def get_html_code(link):
@@ -69,6 +62,34 @@ def beRoomersAccommodations():
 
     accommodations = []
 
+    accommodations_new_york = []
+    accommodations_boston = []
+    accommodations_rome = []
+    accommodations_florence = []
+    accommodations_bologna = []
+    accommodations_milan = []
+    accommodations_padua = []
+    accommodations_turin = []
+    accommodations_london = []
+    accommodations_leeds = []
+    accommodations_cardiff = []
+    accommodations_porto = []
+    accommodations_lisbon = []
+    accommodations_paris = []
+    accommodations_berlin = []
+    accommodations_madrid = []
+    accommodations_barcelona = []
+    accommodations_valencia = []
+    accommodations_granada = []
+    accommodations_seville = []
+    accommodations_salamanca = []
+    accommodations_alicante = []
+    accommodations_malaga = []
+    accommodations_zaragoza = []
+    accommodations_cordova = []
+    accommodations_murcia = []
+    accommodations_cadiz = []
+
     cities = {}
     propertiesTypes = {}
 
@@ -92,32 +113,58 @@ def beRoomersAccommodations():
             else:
                 cities[city] = 1
 
-            # if city == 'roma, italy':
-            #     city = 'rome'
-            # elif city == 'milano, italy':
-            #     city = 'milan'
-            # elif city == 'warsaw, poland':
-            #     city = 'warsaw'
-            # elif city == 'istanbul, t\u00fcrkiye':
-            #     city = 'istanbul'
-            # elif city == 'madrid, spain':
-            #     city = 'madrid'
-            # elif city == 'barcelona, spain':
-            #     city = 'barcelona'
-            # elif city == 'poznan, poland':
-            #     city = 'poznan'
-            # elif city == 'berlin, germany':
-            #     city = 'berlin'
-            # elif city == 'lodz, poland':
-            #     city = 'lodz'
-            # elif city == 'granada, spain':
-            #     city = 'granada'
-            # elif city == 'london, united kingdom':
-            #     city = 'london'
-            # elif city == 'florence, italy':
-            #     city = 'florence'
-            # elif city == 'zaragoza, spain':
-            #     city = 'zaragoza'
+            if city == 'New York':
+                city = 'new-york'
+            elif city == 'Boston (MA)':
+                city = 'boston'
+            elif city == 'Rome':
+                city = 'rome'
+            elif city == 'Florence':
+                city = 'florence'
+            elif city == 'Bologna':
+                city = 'bologna'
+            elif city == 'Milan':
+                city = 'milan'
+            elif city == 'Padua' or city == 'Padova':
+                city = 'padua'
+            elif city == 'Turin':
+                city = 'turin'
+            elif city == 'London':
+                city = 'london'
+            elif city == 'Leeds, United Kingdom':
+                city = 'leeds'
+            elif city == 'Cardiff':
+                city = 'cardiff'
+            elif city == 'Porto':
+                city = 'porto'
+            elif city == 'zaragoza, spain':
+                city = 'Paris'
+            elif city == 'Berlin':
+                city = 'berlin'
+            elif city == 'Madrid':
+                city = 'madrid'
+            elif city == 'Barcelona':
+                city = 'barcelona'
+            elif city == 'Valencia':
+                city = 'valencia'
+            elif city == 'Granada':
+                city = 'granada'
+            elif city == 'Seville':
+                city = 'seville'
+            elif city == 'Salamanca':
+                city = 'salamanca'
+            elif city == 'Alicante':
+                city = 'alicante'
+            elif city == 'Malaga':
+                city = 'malaga'
+            elif city == 'Zaragoza':
+                city = 'zaragoza'
+            elif city == 'Córdoba':
+                city = 'cordova'
+            elif city == 'Murcia':
+                city = 'murcia'
+            elif city == 'Cadiz':
+                city = 'cadiz'
 
             # id
             id = accommodation.get('id', 0)
@@ -163,44 +210,40 @@ def beRoomersAccommodations():
             else:
                 propertiesTypes[typology] = 1
 
-            # if typology == 'Room':
-            #     typology = 'Bedroom'
-            # elif typology == 'complete-apartment':
-            #     typology = 'Full Apartment'
-            # elif typology == 'Student Residence':
-            #     typology = 'Residence'
-            # elif typology == 'shared-flat':
-            #     typology = 'shared-flat'
+            if typology == 'shared-flat':
+                typology = 'Bedroom'
+            elif typology == 'complete-apartment':
+                typology = 'Full Apartment'
+            elif typology == 'student-hall':
+                typology = 'Residence'
+            elif typology == 'host-family':
+                continue
 
             # picture
             picture = accommodation.get('defaultPhoto')
-            #
-            # # occupancies
-            # occupancies = accommodation.get(occupancies_string)
-            # new_occupancies = []
-            # for occupancy in occupancies:
-            #     first_date = occupancy.get('to')
-            #     second_date = occupancy.get('from')
-            #
-            #     first_date_array = first_date.split('-')
-            #     first_date = first_date_array[2] + '-' + first_date_array[1] + '-' + first_date_array[0]
-            #
-            #     second_date_array = second_date.split('-')
-            #     second_date = second_date_array[2] + '-' + second_date_array[1] + '-' + second_date_array[0]
-            #
-            #     new_occupancy = {
-            #         'to': first_date,
-            #         'from': second_date
-            #     }
-            #     new_occupancies.append(new_occupancy)
+            # TODO: add the link treatment
 
-            # occupancies = accommodation.get('availability')
+            # occupancies
+            occupancies = accommodation.get('occupancies')
+            new_occupancies = []
+            for occupancy in occupancies:
+                first_date = occupancy.get('dateTo')
+                second_date = occupancy.get('dateFrom')
+
+                first_date_array = first_date.split('-')
+                first_date = first_date_array[2] + '-' + first_date_array[1] + '-' + first_date_array[0]
+
+                second_date_array = second_date.split('-')
+                second_date = second_date_array[2] + '-' + second_date_array[1] + '-' + second_date_array[0]
+
+                new_occupancy = {
+                    'to': first_date,
+                    'from': second_date
+                }
+                new_occupancies.append(new_occupancy)
 
             bills = accommodation.get('billsIncluded')
-            if bills == 'Some Bills Included':
-                bills = 'some bills included'
-            elif bills == 'Bills Included':
-                bills = 'all bills included'
+            bills = bills.lower()
 
             accommodations.append({
                 city_string: city,
@@ -214,70 +257,95 @@ def beRoomersAccommodations():
                 typology_string: typology,
                 picture_string: picture,
                 bills_string: bills,
-                # occupancies_string: occupancies,
-                occupancies_string: [],
+                occupancies_string: new_occupancies,
             })
 
-        # Order the different accommodation in each city
-        # accommodations_rome = []
-        # accommodations_milan = []
-        # accommodations_warsaw = []
-        # accommodations_istanbul = []
-        # accommodations_madrid = []
-        # accommodations_barcelona = []
-        # accommodations_poznan = []
-        # accommodations_berlin = []
-        # accommodations_lodz = []
-        # accommodations_granada = []
-        # accommodations_london = []
-        # accommodations_florence = []
-        # accommodations_zaragoza = []
-        #
-        # for accommodation in accommodations:
-        #     city = accommodation.get('city')
-        #
-        #     if city == 'rome':
-        #         accommodations_rome.append(accommodation)
-        #     elif city == 'milan':
-        #         accommodations_milan.append(accommodation)
-        #     elif city == 'warsaw':
-        #         accommodations_warsaw.append(accommodation)
-        #     elif city == 'istanbul':
-        #         accommodations_istanbul.append(accommodation)
-        #     elif city == 'madrid':
-        #         accommodations_madrid.append(accommodation)
-        #     elif city == 'barcelona':
-        #         accommodations_barcelona.append(accommodation)
-        #     elif city == 'poznan':
-        #         accommodations_poznan.append(accommodation)
-        #     elif city == 'berlin':
-        #         accommodations_berlin.append(accommodation)
-        #     elif city == 'lodz':
-        #         accommodations_lodz.append(accommodation)
-        #     elif city == 'granada':
-        #         accommodations_granada.append(accommodation)
-        #     elif city == 'london':
-        #         accommodations_london.append(accommodation)
-        #     elif city == 'florence':
-        #         accommodations_florence.append(accommodation)
-        #     elif city == 'zaragoza':
-        #         accommodations_zaragoza.append(accommodation)
+        for accommodation in accommodations:
+            city = accommodation.get('city')
+            if city == 'new-york':
+                accommodations_new_york.append(accommodation)
+            elif city == 'boston':
+                accommodations_boston.append(accommodation)
+            elif city == 'rome':
+                accommodations_rome.append(accommodation)
+            elif city == 'florence':
+                accommodations_florence.append(accommodation)
+            elif city == 'bologna':
+                accommodations_bologna.append(accommodation)
+            elif city == 'milan':
+                accommodations_milan.append(accommodation)
+            elif city == 'padua':
+                accommodations_padua.append(accommodation)
+            elif city == 'turin':
+                accommodations_turin.append(accommodation)
+            elif city == 'london':
+                accommodations_london.append(accommodation)
+            elif city == 'leeds':
+                accommodations_leeds.append(accommodation)
+            elif city == 'cardiff':
+                accommodations_cardiff.append(accommodation)
+            elif city == 'porto':
+                accommodations_porto.append(accommodation)
+            elif city == 'lisbon':
+                accommodations_lisbon.append(accommodation)
+            elif city == 'paris':
+                accommodations_paris.append(accommodation)
+            elif city == 'berlin':
+                accommodations_berlin.append(accommodation)
+            elif city == 'madrid':
+                accommodations_madrid.append(accommodation)
+            elif city == 'barcelona':
+                accommodations_barcelona.append(accommodation)
+            elif city == 'valencia':
+                accommodations_valencia.append(accommodation)
+            elif city == 'granada':
+                accommodations_granada.append(accommodation)
+            elif city == 'seville':
+                accommodations_seville.append(accommodation)
+            elif city == 'salamanca':
+                accommodations_salamanca.append(accommodation)
+            elif city == 'alicante':
+                accommodations_alicante.append(accommodation)
+            elif city == 'malaga':
+                accommodations_malaga.append(accommodation)
+            elif city == 'zaragoza':
+                accommodations_zaragoza.append(accommodation)
+            elif city == 'cordova':
+                accommodations_cordova.append(accommodation)
+            elif city == 'murcia':
+                accommodations_murcia.append(accommodation)
+            elif city == 'cadiz':
+                accommodations_cadiz.append(accommodation)
 
-        dir = os.path.dirname(__file__)
-        # save_to_file(dir, accommodations, 'data_erasmusInn')
-        # save_to_file(dir, accommodations_rome, 'accommodations_eri_rome')
-        # save_to_file(dir, accommodations_milan, 'accommodations_eri_milan')
-        # save_to_file(dir, accommodations_warsaw, 'accommodations_eri_warsaw')
-        # save_to_file(dir, accommodations_istanbul, 'accommodations_eri_istanbul')
-        # save_to_file(dir, accommodations_madrid, 'accommodations_eri_madrid')
-        # save_to_file(dir, accommodations_barcelona, 'accommodations_eri_barcelona')
-        # save_to_file(dir, accommodations_poznan, 'accommodations_eri_poznan')
-        # save_to_file(dir, accommodations_berlin, 'accommodations_eri_berlin')
-        # save_to_file(dir, accommodations_lodz, 'accommodations_eri_lodz')
-        # save_to_file(dir, accommodations_granada, 'accommodations_eri_granada')
-        # save_to_file(dir, accommodations_london, 'accommodations_eri_london')
-        # save_to_file(dir, accommodations_florence, 'accommodations_eri_florence')
-        # save_to_file(dir, accommodations_zaragoza, 'accommodations_eri_zaragoza')
+    dir = os.path.dirname(__file__)
+    save_to_file(dir, accommodations, 'data_beRoomers')
+    save_to_file(dir, accommodations_new_york, 'accommodations_ber_new_york')
+    save_to_file(dir, accommodations_boston, 'accommodations_ber_boston')
+    save_to_file(dir, accommodations_rome, 'accommodations_ber_rome')
+    save_to_file(dir, accommodations_florence, 'accommodations_ber_florence')
+    save_to_file(dir, accommodations_bologna, 'accommodations_ber_bologna')
+    save_to_file(dir, accommodations_milan, 'accommodations_ber_milan')
+    save_to_file(dir, accommodations_padua, 'accommodations_ber_padua')
+    save_to_file(dir, accommodations_turin, 'accommodations_ber_turin')
+    save_to_file(dir, accommodations_london, 'accommodations_ber_london')
+    save_to_file(dir, accommodations_leeds, 'accommodations_ber_leeds')
+    save_to_file(dir, accommodations_cardiff, 'accommodations_ber_cardiff')
+    save_to_file(dir, accommodations_porto, 'accommodations_ber_porto')
+    save_to_file(dir, accommodations_lisbon, 'accommodations_ber_lisbon')
+    save_to_file(dir, accommodations_paris, 'accommodations_ber_paris')
+    save_to_file(dir, accommodations_berlin, 'accommodations_ber_berlin')
+    save_to_file(dir, accommodations_madrid, 'accommodations_ber_madrid')
+    save_to_file(dir, accommodations_barcelona, 'accommodations_ber_barcelona')
+    save_to_file(dir, accommodations_valencia, 'accommodations_ber_valencia')
+    save_to_file(dir, accommodations_granada, 'accommodations_ber_granada')
+    save_to_file(dir, accommodations_seville, 'accommodations_ber_seville')
+    save_to_file(dir, accommodations_salamanca, 'accommodations_ber_salamanca')
+    save_to_file(dir, accommodations_alicante, 'accommodations_ber_alicante')
+    save_to_file(dir, accommodations_malaga, 'accommodations_ber_malaga')
+    save_to_file(dir, accommodations_zaragoza, 'accommodations_ber_zaragoza')
+    save_to_file(dir, accommodations_cordova, 'accommodations_ber_cordova')
+    save_to_file(dir, accommodations_murcia, 'accommodations_ber_murcia')
+    save_to_file(dir, accommodations_cadiz, 'accommodations_ber_cadiz')
     print(cities)
     print(propertiesTypes)
 

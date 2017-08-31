@@ -27,7 +27,7 @@ def get_types_array(types):
 
 def adaptCities(filters):
     cities = []
-    # Setafoot, uniplaces, beroomers, studyAbroadApartments ...
+    # Setafoot, uniplaces, beroomers, studyAbroadApartments, erasmusinn ...
 
     # USA
     cities.append(['new-york', '', 'new-york-united-states', 'new-york', ''])
