@@ -346,8 +346,8 @@ def beRoomersAccommodations():
     save_to_file(dir, accommodations_cordova, 'accommodations_ber_cordova')
     save_to_file(dir, accommodations_murcia, 'accommodations_ber_murcia')
     save_to_file(dir, accommodations_cadiz, 'accommodations_ber_cadiz')
-    print(cities)
-    print(propertiesTypes)
+    # print(cities)
+    # print(propertiesTypes)
 
 
 beRoomersAccommodations()
