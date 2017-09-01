@@ -28,7 +28,7 @@ def beRoomersAccommodations(filters=None):
     filename = os.path.join(dir, route)
 
     if not os.path.isfile(filename):
-        print('File doesn\'t exist')
+        print(filename, 'File doesn\'t exist')
         return []
 
     file = open(filename, 'r')
@@ -153,6 +153,7 @@ def beRoomersAccommodations(filters=None):
                         every_filter_is_passed = False
         # final resolution
         if every_filter_is_passed:
+            del accommodation['occupancies']
             accommodations_to_return.append(accommodation)
 
     accommodations_to_return = accommodations_to_return[0:200]
@@ -163,18 +164,39 @@ cities_test_beRoomers = [
     'alicante',
     'barcelona',
     'berlin',
-    'bologna', 'boston', 'cadiz', 'cardiff', 'cordova', 'florence', 'granada', 'leeds', 'lisbon', 'london', 'madrid',
-    'malaga', 'milan', 'murcia', 'new-york', 'padua', 'paris', 'porto', 'rome', 'salamanca', 'seville', 'turin',
-    'valencia', 'zaragoza'
+    'bologna',
+    'boston',
+    'cadiz',
+    'cardiff',
+    'cordova',
+    'florence',
+    'granada',
+    'leeds',
+    'lisbon',
+    'london',
+    'madrid',
+    'malaga',
+    'milan',
+    'murcia',
+    'new-york',
+    'padua',
+    'paris',
+    'porto',
+    'rome',
+    'salamanca',
+    'seville',
+    'turin',
+    'valencia',
+    'zaragoza',
 ]
-
-for city in cities_test_beRoomers:
-    accommodations = beRoomersAccommodations({'city': city})
-    if len(accommodations) > 0:
-        if accommodations[0].get('city') == city:
-            # Everything's correct
-            pass
-        else:
-            print('The city ', city, ' was not set properly.')
-    else:
-        print('The city ', city, ' doesn\'t have any available accommodation.')
+#
+# for city in cities_test_beRoomers:
+#     accommodations = beRoomersAccommodations({'city': city})
+#     if len(accommodations) > 0:
+#         if accommodations[0].get('city') == city:
+#             # Everything's correct
+#             pass
+#         else:
+#             print('The city ', city, ' was not set properly.')
+#     else:
+#         print('The city ', city, ' doesn\'t have any available accommodation.')

@@ -153,6 +153,7 @@ def erasmusInnAccommodations(filters=None):
                         every_filter_is_passed = False
         # final resolution
         if every_filter_is_passed:
+            del accommodation['occupancies']
             accommodations_to_return.append(accommodation)
 
     accommodations_to_return = accommodations_to_return[0:200]
