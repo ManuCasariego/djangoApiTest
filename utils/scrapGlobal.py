@@ -74,6 +74,7 @@ def getJsonAccommodations(filters={}):
     filters['city'] = city[5]
     if city[5] != '':
         beRoomersLocal = scrapBeRoomersLocal.beRoomersAccommodations(filters)
+        beRoomersLocal = []
     else:
         beRoomersLocal = []
 
