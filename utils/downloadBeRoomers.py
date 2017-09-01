@@ -197,10 +197,10 @@ def beRoomersAccommodations():
             # latitude and longitude
             location = accommodation.get('coordinates')
 
-            longitude = location.get('lat')
+            longitude = location.get('lon')
             longitude = str(longitude)
 
-            latitude = location.get('lon')
+            latitude = location.get('lat')
             latitude = str(latitude)
 
             # typology
