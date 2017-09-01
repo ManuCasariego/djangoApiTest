@@ -206,35 +206,35 @@ def erasmusInnAccommodations():
                 occupancies_string: [],
             })
 
-        for accommodation in accommodations:
-            city = accommodation.get('city')
+    for accommodation in accommodations:
+        city = accommodation.get('city')
 
-            if city == 'rome':
-                accommodations_rome.append(accommodation)
-            elif city == 'milan':
-                accommodations_milan.append(accommodation)
-            elif city == 'warsaw':
-                accommodations_warsaw.append(accommodation)
-            elif city == 'istanbul':
-                accommodations_istanbul.append(accommodation)
-            elif city == 'madrid':
-                accommodations_madrid.append(accommodation)
-            elif city == 'barcelona':
-                accommodations_barcelona.append(accommodation)
-            elif city == 'poznan':
-                accommodations_poznan.append(accommodation)
-            elif city == 'berlin':
-                accommodations_berlin.append(accommodation)
-            elif city == 'lodz':
-                accommodations_lodz.append(accommodation)
-            elif city == 'granada':
-                accommodations_granada.append(accommodation)
-            elif city == 'london':
-                accommodations_london.append(accommodation)
-            elif city == 'florence':
-                accommodations_florence.append(accommodation)
-            elif city == 'zaragoza':
-                accommodations_zaragoza.append(accommodation)
+        if city == 'rome':
+            accommodations_rome.append(accommodation)
+        elif city == 'milan':
+            accommodations_milan.append(accommodation)
+        elif city == 'warsaw':
+            accommodations_warsaw.append(accommodation)
+        elif city == 'istanbul':
+            accommodations_istanbul.append(accommodation)
+        elif city == 'madrid':
+            accommodations_madrid.append(accommodation)
+        elif city == 'barcelona':
+            accommodations_barcelona.append(accommodation)
+        elif city == 'poznan':
+            accommodations_poznan.append(accommodation)
+        elif city == 'berlin':
+            accommodations_berlin.append(accommodation)
+        elif city == 'lodz':
+            accommodations_lodz.append(accommodation)
+        elif city == 'granada':
+            accommodations_granada.append(accommodation)
+        elif city == 'london':
+            accommodations_london.append(accommodation)
+        elif city == 'florence':
+            accommodations_florence.append(accommodation)
+        elif city == 'zaragoza':
+            accommodations_zaragoza.append(accommodation)
 
     dir = os.path.dirname(__file__)
     save_to_file(dir, accommodations, 'data_erasmusInn')

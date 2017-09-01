@@ -173,32 +173,32 @@ def studyAbroadAccommodations():
                 occupancies_string: new_occupancies
             })
 
-        for accommodation in accommodations:
-            city = accommodation.get('city')
-            if city == 'madrid':
-                accommodations_madrid.append(accommodation)
-            elif city == 'new-york':
-                accommodations_new_york.append(accommodation)
-            elif city == 'barcelona':
-                accommodations_barcelona.append(accommodation)
-            elif city == 'florence':
-                accommodations_florence.append(accommodation)
-            elif city == 'granada':
-                accommodations_granada.append(accommodation)
-            elif city == 'london':
-                accommodations_london.append(accommodation)
-            elif city == 'milan':
-                accommodations_milan.append(accommodation)
-            elif city == 'prague':
-                accommodations_prague.append(accommodation)
-            elif city == 'paris':
-                accommodations_paris.append(accommodation)
-            elif city == 'rome':
-                accommodations_rome.append(accommodation)
-            elif city == 'san-sebastian':
-                accommodations_san_sebastian.append(accommodation)
-            elif city == 'valencia':
-                accommodations_valencia.append(accommodation)
+    for accommodation in accommodations:
+        city = accommodation.get('city')
+        if city == 'madrid':
+            accommodations_madrid.append(accommodation)
+        elif city == 'new-york':
+            accommodations_new_york.append(accommodation)
+        elif city == 'barcelona':
+            accommodations_barcelona.append(accommodation)
+        elif city == 'florence':
+            accommodations_florence.append(accommodation)
+        elif city == 'granada':
+            accommodations_granada.append(accommodation)
+        elif city == 'london':
+            accommodations_london.append(accommodation)
+        elif city == 'milan':
+            accommodations_milan.append(accommodation)
+        elif city == 'prague':
+            accommodations_prague.append(accommodation)
+        elif city == 'paris':
+            accommodations_paris.append(accommodation)
+        elif city == 'rome':
+            accommodations_rome.append(accommodation)
+        elif city == 'san-sebastian':
+            accommodations_san_sebastian.append(accommodation)
+        elif city == 'valencia':
+            accommodations_valencia.append(accommodation)
 
     dir = os.path.dirname(__file__)
 
