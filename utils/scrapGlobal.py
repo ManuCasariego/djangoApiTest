@@ -1,6 +1,6 @@
 import json
 
-from utils import scrapUniplaces, scrapBeRoomers, scrapStudyAbroadApartments, scrapErasmusInn
+from utils import scrapUniplaces, scrapBeRoomers, scrapStudyAbroadApartments, scrapErasmusInn, scrapBeRoomersLocal
 from utils.parametersUtils import adaptCities, get_types_array
 
 
@@ -52,7 +52,8 @@ def getJsonAccommodations(filters={}):
     # Requiring beRoomers accommodations
     filters['city'] = city[2]
     if city[2] != '':
-        beRoomers = scrapBeRoomers.beRoomersAccommodations(filters)
+        # beRoomers = scrapBeRoomers.beRoomersAccommodations(filters)
+        pass
         # saveToFile(beRoomers, '../data/salidaBeRoomers')
     else:
         beRoomers = []
@@ -66,13 +67,19 @@ def getJsonAccommodations(filters={}):
     # Requiring erasmusInn accommodations
     filters['city'] = city[4]
     if city[4] != '':
-        # TODO: change this empty array for the call to erasmusinn method
         erasmusInn = scrapErasmusInn.erasmusInnAccommodations(filters)
     else:
         erasmusInn = []
 
+    filters['city'] = city[5]
+    if city[5] != '':
+        beRoomersLocal = scrapBeRoomersLocal.beRoomersAccommodations(filters)
+    else:
+        beRoomersLocal = []
+
+
     # random.shuffle(accommodations)
     accommodations_saa_eri = join_two_lists(studyAbroadApartments, erasmusInn)
-    accommodations = join_three_lists(uniplaces, beRoomers, accommodations_saa_eri)
+    accommodations = join_three_lists(uniplaces, beRoomersLocal, accommodations_saa_eri)
 
     return accommodations
