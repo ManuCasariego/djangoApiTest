@@ -245,6 +245,8 @@ def beRoomersAccommodations():
 
             bills = accommodation.get('billsIncluded')
             bills = bills.lower()
+            if bills == 'bills included':
+                bills = 'all bills included'
 
             accommodations.append({
                 city_string: city,
